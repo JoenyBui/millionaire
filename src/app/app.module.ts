@@ -16,20 +16,27 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule} from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { ModeratorDetailComponent} from './moderator/moderator-detail.component';
+import { ModeratorDetailComponent} from './moderator-detail/moderator-detail.component';
 import { PlayerComponent } from './player/player.component';
 import { ModeratorComponent } from './moderator/moderator.component';
+import {FormsModule} from '@angular/forms';
+import {GameService} from './game.service';
+import {ModeratorService} from './moderator.service';
+import {PlayerService} from './player.service';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayerComponent,
     ModeratorComponent,
-    ModeratorDetailComponent
+    ModeratorDetailComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -46,7 +53,7 @@ import { ModeratorComponent } from './moderator/moderator.component';
     FlexLayoutModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [GameService, ModeratorService, PlayerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
