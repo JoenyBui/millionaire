@@ -18,8 +18,102 @@
   <!--</li>-->
 <!--</ul>-->
 
-<ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item.name}}
-  </li>
-</ul>
+<!--<ul>-->
+  <!--<li class="text" *ngFor="let item of items | async">-->
+    <!--{{item.name}}-->
+  <!--</li>-->
+<!--</ul>-->
+
+<div>
+  <!--<mat-toolbar color="primary">-->
+    <!--<span><mat-icon>mood</mat-icon></span>-->
+
+    <!--<span>Yay, Material in Angular 2!</span>-->
+
+    <!--<button mat-icon-button [mat-menu-trigger-for]="menu">-->
+      <!--<mat-icon>more_vert</mat-icon>-->
+    <!--</button>-->
+  <!--</mat-toolbar>-->
+
+  <!--<mat-menu x-position="before" #menu="matMenu">-->
+    <!--<button mat-menu-item>Option 1</button>-->
+    <!--<button mat-menu-item>Option 2</button>-->
+  <!--</mat-menu>-->
+
+
+  <!--<mat-card>-->
+  <mat-list>
+    <mat-list-item><button mat-button>Host</button></mat-list-item>
+    <mat-list-item><button mat-raised-button>Playergit stasfds</button></mat-list-item>
+    <!--<mat-list-item>Item 3</mat-list-item>-->
+  </mat-list>
+
+
+    <!--<button mat-raised-button color="primary">The</button>-->
+    <!--<button mat-raised-button color="accent">Buttons</button>-->
+  <!--</mat-card>-->
+
+  <!--<span class="done">-->
+    <!--<button mat-fab>-->
+      <!--<mat-icon>check circle</mat-icon>-->
+    <!--</button>-->
+  <!--</span>-->
+</div>
+
+<div class="flex-container"
+     fxLayout="row"
+     fxLayout.xs="column"
+     fxLayoutAlign="center center"
+     fxLayoutAlign.xs="start">
+  <div class="flex-item" fxFlex="20%" fxFlex.xs="40%">  </div>
+  <div class="flex-item" fxFlex>        </div>
+  <div class="flex-item" fxFlex="25px"> </div>
+</div>
+
+<mat-card class="card-demo">
+  <mat-card-title><a href="http://jsfiddle.net/tndgvkfq/" target="_blank">JsFiddle</a>
+  </mat-card-title>
+  <mat-card-subtitle>
+    Grid with column spans calculated using
+    '<span style="color: #333333">flex: &lt;grow&gt; &lt;shrink&gt; calc(&lt;...&gt;);</span>'
+    expressions.
+  </mat-card-subtitle>
+  <mat-card-content>
+    <div class="containerX">
+      <div class="container">
+        <div>flex: 1 1 5em;</div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="container">
+        <div></div>
+        <div [fxFlex]="calc2Cols"> flex: 2 2 calc(10em + 10px);</div>
+        <div></div>
+      </div>
+      <div class="container">
+        <div [fxFlex]="calc2Cols"> flex: 2 2 calc(10em + 10px);</div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="container">
+        <div></div>
+        <div></div>
+        <div [fxFlex]="calc2Cols"> flex: 2 2 calc(10em + 10px);</div>
+      </div>
+      <div class="container">
+        <div [fxFlex]="calc3Cols" class="col3"> flex: 3 3 calc(15em + 20px);</div>
+        <div></div>
+      </div>
+      <div class="container">
+        <div></div>
+        <div [fxFlex]="calc3Cols" class="col3"> flex: 3 3 calc(15em + 20px);</div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer class="bottomPad">
+    <div class="hint">Note: each cell has 'margin-left:10px' so the 'calc( )' expressions must
+      account for those.
+    </div>
+  </mat-card-footer>
+</mat-card>
