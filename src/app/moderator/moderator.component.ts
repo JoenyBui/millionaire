@@ -15,30 +15,37 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./moderator.component.css'],
 })
 export class ModeratorComponent implements OnInit {
-  roomRef: AngularFireObject<any>;
-  room: Observable<any>;
+  // roomRef: AngularFireDatabase<any>;
+  // room: Observable<any []>;
+  db: AngularFireDatabase;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               db: AngularFireDatabase) {
-    this.roomRef = db.object('room');
-    this.room = this.roomRef.valueChanges();
+    this.db = db;
+    // this.room = db.list('room');
+    // this.roomRef = db.list('room');
+    // this.room = this.roomRef.valueChanges();
   }
 
   ngOnInit() {
   }
 
   save(room: string, name: string) {
-    return this.roomRef.set({
+    const roomsRef = this.db.list('rooms');
+
+    return roomsRef.push({
       roomTitle: room,
       name: name
     });
   }
 
   createNewRoom() {
-    const promise = this.save("hi", "bye")
-    promise.then(_ =>
-      this.router.navigate(['/moderator-room/1'])
-    ).catch(err => console.log(err, 'You do not have access'));
+    const promise = this.save("hi", "bye");
+    promise.then(
+      (val) =>
+        this.router.navigate([`/moderator-room/${val.key}`]),
+      (err) => console.log('has error when creating new room')
+    );
   }
 }

@@ -1,4 +1,5 @@
 export class Moderator {
-  id: number;
+  id: string;
   name: string;
+  roomId: string;
 }
