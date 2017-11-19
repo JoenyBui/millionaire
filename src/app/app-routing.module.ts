@@ -5,6 +5,7 @@ import {ModeratorDetailComponent} from './moderator-detail/moderator-detail.comp
 import {PlayerComponent} from './player/player.component';
 import {ModeratorComponent} from './moderator/moderator.component';
 import {LandingPageComponent} from './landing-page/landing-page.component';
+import {PlayerDetailComponent} from './player-detail/player-detail.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'home', component: LandingPageComponent},
   {path: 'moderator-detail', component: ModeratorDetailComponent},
   {path: 'moderator', component: ModeratorComponent},
-  {path: 'player', component: PlayerComponent}
+  {path: 'player', component: PlayerComponent},
+  {path: 'player-detail', component: PlayerDetailComponent}
 ];
 
 @NgModule({

@@ -1,29 +1,38 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { environment } from '../environments/environment';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {environment} from '../environments/environment';
 
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MatMenuModule, MatCardModule, MatIconModule, MatButtonModule, MatToolbarModule, MatCheckboxModule} from "@angular/material";
-import {MatListModule, MatFormFieldModule, MatOptionModule, MatSelectModule } from "@angular/material";
+import {
+  MatMenuModule,
+  MatCardModule,
+  MatIconModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatCheckboxModule
+} from "@angular/material";
+import {MatListModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
+import {MatInputModule} from '@angular/material';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
-import { AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 
-import { AppComponent } from './app.component';
-import { ModeratorDetailComponent} from './moderator-detail/moderator-detail.component';
-import { PlayerComponent } from './player/player.component';
-import { ModeratorComponent } from './moderator/moderator.component';
+import {AppComponent} from './app.component';
+import {ModeratorDetailComponent} from './moderator-detail/moderator-detail.component';
+import {PlayerComponent} from './player/player.component';
+import {ModeratorComponent} from './moderator/moderator.component';
 import {FormsModule} from '@angular/forms';
 import {GameService} from './game.service';
 import {ModeratorService} from './moderator.service';
 import {PlayerService} from './player.service';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import {LandingPageComponent} from './landing-page/landing-page.component';
+import {PlayerDetailComponent} from './player-detail/player-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +40,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     PlayerComponent,
     ModeratorComponent,
     ModeratorDetailComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    PlayerDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -50,10 +60,12 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
+    MatInputModule,
     FlexLayoutModule,
     AppRoutingModule
   ],
   providers: [GameService, ModeratorService, PlayerService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

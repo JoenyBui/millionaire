@@ -1,8 +1,8 @@
-.moderator-container {
+.player-detail-container {
   display: flex;
   flex-direction: column;
 }
 
-.moderator-container > * {
+.player-detail-container > * {
   width: 100%;
 }
