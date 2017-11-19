@@ -1,13 +1,16 @@
 <mat-card>
   <div class="moderator-container">
-    <mat-form-field>
-      <input matInput placeholder="Name">
-    </mat-form-field>
+    <!--<form>-->
 
-    <mat-form-field>
-      <input matInput placeholder="Room Title">
-    </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Name" required [(ngModel)]="name">
+      </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="createNewRoom()">Create Room</button>
+      <mat-form-field>
+        <input matInput placeholder="Room Title" required [(ngModel)]="roomName">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="createNewRoom()">Create Room</button>
+    <!--</form>-->
   </div>
 </mat-card>
