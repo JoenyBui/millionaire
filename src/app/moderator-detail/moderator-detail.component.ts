@@ -9,14 +9,18 @@ import {Location} from '@angular/common';
   styleUrls: ['./moderator-detail.component.css']
 })
 export class ModeratorDetailComponent implements OnInit {
+  name: number = null;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location
   ) {}
 
 
   ngOnInit(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
     // this.route.paramMap
+    this.name = id;
   }
 }

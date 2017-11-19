@@ -20,6 +20,6 @@ export class ModeratorComponent implements OnInit {
   }
 
   createNewRoom() {
-    this.router.navigate(['/moderator-room'])
+    this.router.navigate(['/moderator-room/1'])
   }
 }

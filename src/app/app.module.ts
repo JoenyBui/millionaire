@@ -33,6 +33,7 @@ import {ModeratorService} from './moderator.service';
 import {PlayerService} from './player.service';
 import {LandingPageComponent} from './landing-page/landing-page.component';
 import {PlayerDetailComponent} from './player-detail/player-detail.component';
+import { RoomComponent } from './room/room.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {PlayerDetailComponent} from './player-detail/player-detail.component';
     ModeratorComponent,
     ModeratorDetailComponent,
     LandingPageComponent,
-    PlayerDetailComponent
+    PlayerDetailComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,6 @@ export class PlayerComponent implements OnInit {
   }
 
   joinGameRoom() {
-    this.router.navigate(['/player-room/'])
+    this.router.navigate(['/player-room/1'])
   }
 }
