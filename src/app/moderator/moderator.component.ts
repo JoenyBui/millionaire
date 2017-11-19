@@ -25,9 +25,6 @@ export class ModeratorComponent implements OnInit {
               private router: Router,
               db: AngularFireDatabase) {
     this.db = db;
-    // this.room = db.list('room');
-    // this.roomRef = db.list('room');
-    // this.room = this.roomRef.valueChanges();
   }
 
   ngOnInit() {
@@ -50,12 +47,19 @@ export class ModeratorComponent implements OnInit {
     });
   }
 
+  updateModerator(key, obj) {
+    return this.db.list('moderators').update(key, obj);
+  }
+
   save(roomName: string, name: string) {
     return new Promise<any>(
       (resolve, reject) => {
         this.saveNewModerator(name).then(
-          (val1: any) => this.saveNewRoom(roomName, val1.key).then(
-            (val2) => resolve(val2),
+          (val1) => this.saveNewRoom(roomName, val1.key).then(
+            (val2) => {
+              this.updateModerator(val1.key, {roomid: val2.key});
+              resolve({key: val1.key, obj: val2});
+            },
             (err2) => reject(err2)
           ),
           (err1) => reject(err1)
@@ -68,8 +72,7 @@ export class ModeratorComponent implements OnInit {
     const promise = this.save(this.roomName, this.name);
 
     promise.then(
-      (val) =>
-        this.router.navigate([`/moderator-room/${val.key}`]),
+      (val) => this.router.navigate([`/moderator-room/${val.key}`]),
       (err) => console.log('has error when creating new room')
     );
   }
