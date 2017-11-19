@@ -38,12 +38,13 @@ export class ModeratorComponent implements OnInit {
     });
   }
 
-  saveNewRoom(name, mid) {
+  saveNewRoom(name, mid, passcode) {
     const roomsRef = this.db.list('rooms');
 
     return roomsRef.push({
       name: name,
       mid: mid,
+      passcode: [passcode]
     });
   }
 
@@ -51,13 +52,29 @@ export class ModeratorComponent implements OnInit {
     return this.db.list('moderators').update(key, obj);
   }
 
+  addCodeMap(key, roomid) {
+    return this.db.list('codeToMap').push(
+      {
+        uid: key,
+        roomid: roomid
+      }
+    );
+  }
+
+  generatePasscode() {
+    return Math.random().toString().slice(2, 8);
+  }
+
   save(roomName: string, name: string) {
     return new Promise<any>(
       (resolve, reject) => {
+        const passcode = this.generatePasscode();
         this.saveNewModerator(name).then(
-          (val1) => this.saveNewRoom(roomName, val1.key).then(
+          (val1) => this.saveNewRoom(roomName, val1.key, code).then(
             (val2) => {
               this.updateModerator(val1.key, {roomid: val2.key});
+              this.addCodeMap(passcode, val2.key)
+
               resolve({key: val1.key, obj: val2});
             },
             (err2) => reject(err2)
