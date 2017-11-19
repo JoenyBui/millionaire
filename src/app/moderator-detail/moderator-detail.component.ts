@@ -9,9 +9,13 @@ import {Location} from '@angular/common';
   styleUrls: ['./moderator-detail.component.css']
 })
 export class ModeratorDetailComponent implements OnInit {
+
   constructor(
-    private router: Router
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
+
+
   ngOnInit(): void {
     // this.route.paramMap
   }

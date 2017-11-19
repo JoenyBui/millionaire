@@ -11,10 +11,10 @@ import {PlayerDetailComponent} from './player-detail/player-detail.component';
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: LandingPageComponent},
-  {path: 'moderator-detail', component: ModeratorDetailComponent},
+  {path: 'moderator-room', component: ModeratorDetailComponent},
   {path: 'moderator', component: ModeratorComponent},
   {path: 'player', component: PlayerComponent},
-  {path: 'player-detail', component: PlayerDetailComponent}
+  {path: 'player-room', component: PlayerDetailComponent}
 ];
 
 @NgModule({
