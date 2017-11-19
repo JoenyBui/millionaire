@@ -1,0 +1,8 @@
+.landing-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-page-container > * {
+  width: 100%;
+}
