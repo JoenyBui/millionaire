@@ -44,7 +44,7 @@ export class ModeratorComponent implements OnInit {
     return roomsRef.push({
       name: name,
       mid: mid,
-      passcode: [passcode]
+      passcode: passcode
     });
   }
 
@@ -52,11 +52,9 @@ export class ModeratorComponent implements OnInit {
     return this.db.list('moderators').update(key, obj);
   }
 
-  addCodeMap(key, roomid) {
-    return this.db.list('codeToMap').push(
-      {
-        uid: key,
-        roomid: roomid
+  addCodeMap(passcode, roomid) {
+    return this.db.object('codeToMap').update({
+        [passcode] : roomid
       }
     );
   }
@@ -70,10 +68,10 @@ export class ModeratorComponent implements OnInit {
       (resolve, reject) => {
         const passcode = this.generatePasscode();
         this.saveNewModerator(name).then(
-          (val1) => this.saveNewRoom(roomName, val1.key, code).then(
+          (val1) => this.saveNewRoom(roomName, val1.key, passcode).then(
             (val2) => {
               this.updateModerator(val1.key, {roomid: val2.key});
-              this.addCodeMap(passcode, val2.key)
+              this.addCodeMap(passcode, val2.key);
 
               resolve({key: val1.key, obj: val2});
             },
