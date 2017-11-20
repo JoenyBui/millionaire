@@ -1,10 +1,10 @@
 <div class="player-container">
   <mat-form-field>
-    <input matInput placeholder="Name">
+    <input matInput placeholder="Name" required [(ngModel)]="name">
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Room ID">
+    <input matInput placeholder="Room Passcode" required [(ngModel)]="passcode">
   </mat-form-field>
 
   <!--<mat-form-field>-->
