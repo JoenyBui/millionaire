@@ -32,7 +32,7 @@ export class PlayerComponent implements OnInit {
     return playerRef.push({
       name: name,
       roomid: roomid
-    })
+    });
   }
 
   findGameRoom() {
@@ -63,7 +63,7 @@ export class PlayerComponent implements OnInit {
           this.router.navigate([`/player-room/${val1.key}`]);
         }, (err1) => {
           console.log(err1);
-        };
+        });
       },
       (err) => {
         console.log(err);
