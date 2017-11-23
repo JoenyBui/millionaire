@@ -14,6 +14,7 @@ import {Observable} from 'rxjs/Observable';
 })
 export class PlayerDetailComponent implements OnInit {
   id: string;
+  name: string;
   db: AngularFireDatabase;
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,8 @@ export class PlayerDetailComponent implements OnInit {
       const val = action.payload.val();
       const amOnline = this.db.database.ref('/.info/connected');
       const userRef = this.db.database.ref(`/roomPresence/${val.roomid}/${id}`);
+
+      this.name = val.name;
 
       amOnline.on('value', function (snapshot) {
         if (snapshot.val()) {

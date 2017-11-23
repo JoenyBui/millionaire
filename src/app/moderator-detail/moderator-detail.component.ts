@@ -4,6 +4,10 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Location} from '@angular/common';
 
 import {AngularFireDatabase} from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
+
+import { ProblemModeratorComponent } from '../problem-moderator/problem-moderator.component';
+import { Problem } from '../problem';
 
 @Component({
   selector: 'app-moderator-detail',
@@ -13,6 +17,9 @@ import {AngularFireDatabase} from 'angularfire2/database';
 export class ModeratorDetailComponent implements OnInit {
   id: string;
   name: string;
+  roomid: string;
+  playerList: Observable<any[]>;
+
   db: AngularFireDatabase;
 
   constructor(
@@ -24,6 +31,23 @@ export class ModeratorDetailComponent implements OnInit {
     this.db = db;
   }
 
+  syncPlayers(): void {
+    this.playerList = this.db.list(`/roomPresence/${this.roomid}/`).snapshotChanges();
+    // this.db.list(`/roomPresence/${this.roomid}/`, function(snapshot) {
+    //   this.playerItem =
+    // });
+  }
+
+  addNewProblem(): void {
+    const obj = new Problem();
+    obj.mid = this.id;
+
+    this.db.list('/problems').push(obj).then(
+      (val) => console.log(val),
+      (err) => console.log(err)
+    );
+  }
+
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
@@ -33,6 +57,11 @@ export class ModeratorDetailComponent implements OnInit {
       const val = action.payload.val();
       const amOnline = this.db.database.ref('/.info/connected');
       const userRef = this.db.database.ref(`/moderators/${id}/presence`);
+
+      this.name = val.name;
+      this.roomid = val.roomid;
+
+      this.syncPlayers();
 
       amOnline.on('value', function (snapshot) {
         if (snapshot.val()) {
