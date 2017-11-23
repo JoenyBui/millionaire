@@ -1,6 +1,6 @@
-<div class="example-container">
+<div class="example-container" fxLayout="column">
 
-  <mat-card>
+  <mat-card fxFlex="33">
     <label>{{name}}</label>
 
     <mat-list>
@@ -16,5 +16,8 @@
     </button>
   </mat-card>
 
-  <app-problem-moderator></app-problem-moderator>
+  <!--<div *ngFor="let item of playerList | async">-->
+    <app-problem-moderator [problemId]="problemId"></app-problem-moderator>
+  <!--</div>-->
 </div>
+

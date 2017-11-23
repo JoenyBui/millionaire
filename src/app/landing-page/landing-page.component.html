@@ -1,7 +1,7 @@
 <mat-card>
   <div class="landing-page-container">
 
-  <!--<mat-list>-->
+    <!--<mat-list>-->
     <button mat-raised-button color='primary' (click)="showModeratorView()">Moderator</button>
 
     <br>
@@ -10,3 +10,25 @@
     <!--</mat-list>-->
   </div>
 </mat-card>
+
+
+<div fxLayout='column' class="zero">
+  <div fxFlex="33" [fxFlex.md]="box1Width" class="one">
+    <button>Button</button>
+  </div>
+  <div fxFlex="33" [fxLayout]="direction" fxLayout.md="row" class="two">
+    <div fxFlex="22" fxFlex.md="10" fxHide.lg="true" fxHide.sm="true" class="two_one">
+      <button>Button 1</button>
+    </div>
+    <div fxFlex="20" fxFlex.md="65" class="two_two">
+      <button>Button 2</button>
+    </div>
+    <div fxFlex="30" fxFlex.md="25" fxShow [fxHide.md]="hideBox" class="two_three">
+      <button>Button 3</button>
+    </div>
+  </div>
+  <div fxFlex class="three">
+    <button>Button</button>
+  </div>
+
+</div>

@@ -15,7 +15,9 @@ import {
   MatIconModule,
   MatButtonModule,
   MatToolbarModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatGridListModule,
+  MatSliderModule
 } from "@angular/material";
 import {MatListModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
@@ -69,6 +71,8 @@ import { ProblemPlayerComponent } from './problem-player/problem-player.componen
     MatOptionModule,
     MatSelectModule,
     MatInputModule,
+    MatGridListModule,
+    MatSliderModule,
     FlexLayoutModule,
     AppRoutingModule
   ],

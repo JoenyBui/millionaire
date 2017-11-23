@@ -20,6 +20,8 @@ export class ModeratorDetailComponent implements OnInit {
   roomid: string;
   playerList: Observable<any[]>;
 
+  problemId: string;
+
   db: AngularFireDatabase;
 
   constructor(
@@ -43,7 +45,7 @@ export class ModeratorDetailComponent implements OnInit {
     obj.mid = this.id;
 
     this.db.list('/problems').push(obj).then(
-      (val) => console.log(val),
+      (val) => this.problemId = val.key,
       (err) => console.log(err)
     );
   }
