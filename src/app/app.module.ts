@@ -39,6 +39,10 @@ import {PlayerDetailComponent} from './player-detail/player-detail.component';
 import { RoomComponent } from './room/room.component';
 import { ProblemModeratorComponent } from './problem-moderator/problem-moderator.component';
 import { ProblemPlayerComponent } from './problem-player/problem-player.component';
+import { RoomPersonListComponent } from './room-person-list/room-person-list.component';
+import { RoomProblemListComponent } from './room-problem-list/room-problem-list.component';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,10 @@ import { ProblemPlayerComponent } from './problem-player/problem-player.componen
     PlayerDetailComponent,
     RoomComponent,
     ProblemModeratorComponent,
-    ProblemPlayerComponent
+    ProblemPlayerComponent,
+    RoomPersonListComponent,
+    RoomProblemListComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +83,7 @@ import { ProblemPlayerComponent } from './problem-player/problem-player.componen
     FlexLayoutModule,
     AppRoutingModule
   ],
-  providers: [GameService, ModeratorService, PlayerService],
+  providers: [GameService, ModeratorService, PlayerService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

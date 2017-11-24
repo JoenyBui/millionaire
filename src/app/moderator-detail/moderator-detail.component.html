@@ -17,7 +17,9 @@
   </mat-card>
 
   <!--<div *ngFor="let item of playerList | async">-->
-    <app-problem-moderator [problemId]="problemId"></app-problem-moderator>
+  <app-room-problem-list [roomId]="problemId" (roomidChange)="roomidChange($event)"></app-room-problem-list>
+  <app-room-person-list [roomId]="problemId"  (roomidChange)="roomidChange($event)"></app-room-person-list>
+  <app-problem-moderator [problemId]="problemId"></app-problem-moderator>
   <!--</div>-->
 </div>
 
