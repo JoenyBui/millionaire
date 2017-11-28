@@ -21,6 +21,7 @@ import { ModeratorService } from '../moderator.service';
   providers: [ModeratorService]
 })
 export class ModeratorDetailComponent implements OnInit {
+  moderator;
   id: string;
   name: string;
   roomid: string;
@@ -30,6 +31,7 @@ export class ModeratorDetailComponent implements OnInit {
   problemId: string;
 
   db: AngularFireDatabase;
+  moderatorService: ModeratorService;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,17 +41,10 @@ export class ModeratorDetailComponent implements OnInit {
     moderatorService: ModeratorService
   ) {
     this.db = db;
-
-    moderatorService.missionConfirmed$.subscribe(
-
-    )
-  }
-
-  syncPlayers(): void {
-    this.playerList = this.db.list(`/roomPresence/${this.roomid}/`).snapshotChanges();
-    // this.db.list(`/roomPresence/${this.roomid}/`, function(snapshot) {
-    //   this.playerItem =
-    // });
+    this.moderatorService = moderatorService;
+    // moderatorService.missionConfirmed$.subscribe(
+    //
+    // )
   }
 
   addNewProblem(): void {
@@ -64,27 +59,32 @@ export class ModeratorDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-
-    this.id = id;
-
-    this.db.object(`moderators/${id}`).snapshotChanges().subscribe(action => {
-      const val = action.payload.val();
-      const amOnline = this.db.database.ref('/.info/connected');
-      const userRef = this.db.database.ref(`/moderators/${id}/presence`);
-
-      this.name = val.name;
-      this.roomid = val.roomid;
-
-      this.roomidChange.emit(this.roomid);
-
-      this.syncPlayers();
-
-      amOnline.on('value', function (snapshot) {
-        if (snapshot.val()) {
-          userRef.onDisconnect().remove();
-          userRef.set(true);
-        }
-      });
-    });
+    this.moderator = this.route.snapshot.data['moderator'];
+    this.moderatorService.enterRoom(id);
+    // const id = this.route.snapshot.paramMap.get('id');
+    //
+    // this.id = id;
+    //
+    // this.db.object(`moderators/${id}`).snapshotChanges().subscribe(action => {
+    //   const val = action.payload.val();
+    //   const amOnline = this.db.database.ref('/.info/connected');
+    //   const userRef = this.db.database.ref(`/moderators/${id}/presence`);
+    //
+    //   this.name = val.name;
+    //   this.roomid = val.roomid;
+    //
+    //   this.moderatorService.setRoomId(val.roomid);
+    //
+    //   this.roomidChange.emit(this.roomid);
+    //
+    //   this.syncPlayers();
+    //
+    //   amOnline.on('value', function (snapshot) {
+    //     if (snapshot.val()) {
+    //       userRef.onDisconnect().remove();
+    //       userRef.set(true);
+    //     }
+    //   });
+    // });
   }
 }

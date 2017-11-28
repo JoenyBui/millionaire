@@ -44,6 +44,8 @@ import { RoomProblemListComponent } from './room-problem-list/room-problem-list.
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 
+import { MapToIterablePipe } from './pipe/map-to-iterable';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +59,8 @@ import { MessageService } from './message.service';
     ProblemPlayerComponent,
     RoomPersonListComponent,
     RoomProblemListComponent,
-    MessagesComponent
+    MessagesComponent,
+    MapToIterablePipe
   ],
   imports: [
     BrowserModule,
