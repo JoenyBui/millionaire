@@ -1,20 +1,33 @@
 <mat-card>
-  problem-moderator works!
-  {{problemId}}
+  <mat-card-header>
+    <!--<div mat-card-avatar></div>-->
+    <mat-card-title>Problem</mat-card-title>
+    <mat-card-subtitle>Editor</mat-card-subtitle>
+  </mat-card-header>
 
-  <input [(ngModel)]="username">
+  <mat-card-content>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Name" [(ngModel)]="name" value="name">
+    </mat-form-field>
 
-  <p>Hello {{username}}</p>
+    <mat-tab-group>
+      <mat-tab label="Multiple Choice">
+        <mat-grid-list cols="2" rowHeight="100px">
+          <mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="primary">Red</button></mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="accent">Blue</button></mat-grid-tile>
 
-  <button mat-raised-button (click)="update()">Update</button>
+          <mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="warn">Green</button></mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="yellow">Yellow</button></mat-grid-tile>
+        </mat-grid-list>
+      </mat-tab>
+      <mat-tab label="Slider">
+        <mat-slider step="4" tickInterval="3"></mat-slider>
+      </mat-tab>
+    </mat-tab-group>
 
-  <mat-grid-list cols="2" rowHeight="100px">
-    <mat-grid-tile [colspan]="1" [rowspan]="1"><button mat-raised-button color="primary">Red</button></mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1"><button mat-raised-button color="accent">Blue</button></mat-grid-tile>
+  </mat-card-content>
 
-    <mat-grid-tile [colspan]="1" [rowspan]="1"><button mat-raised-button color="warn">Green</button></mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1"><button mat-raised-button color="yellow">Yellow</button></mat-grid-tile>
-  </mat-grid-list>
-
-  <mat-slider step="4" tickInterval="3"></mat-slider>
+  <mat-card-actions>
+    <button mat-button (click)="submit()">Submit</button>
+  </mat-card-actions>
 </mat-card>

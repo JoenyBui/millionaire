@@ -17,8 +17,8 @@ import {
   MatToolbarModule,
   MatCheckboxModule,
   MatGridListModule,
-  MatSliderModule
-} from "@angular/material";
+  MatSliderModule, MatTabsModule
+} from '@angular/material';
 import {MatListModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
 
@@ -43,6 +43,7 @@ import { RoomPersonListComponent } from './room-person-list/room-person-list.com
 import { RoomProblemListComponent } from './room-problem-list/room-problem-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
+
 
 import { MapToIterablePipe } from './pipe/map-to-iterable';
 
@@ -83,6 +84,7 @@ import { MapToIterablePipe } from './pipe/map-to-iterable';
     MatInputModule,
     MatGridListModule,
     MatSliderModule,
+    MatTabsModule,
     FlexLayoutModule,
     AppRoutingModule
   ],

@@ -11,7 +11,7 @@ import {Observable} from 'rxjs/Observable';
 })
 export class RoomProblemListComponent implements OnInit {
   @Input() roomId: string;
-  public problems: Observable<any[];
+  public problems: Observable<any[]>;
   constructor(private moderateService: ModeratorService) { }
 
   ngOnInit() {

@@ -58,9 +58,9 @@ export class ModeratorDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
     this.moderator = this.route.snapshot.data['moderator'];
-    this.moderatorService.enterRoom(id);
+    this.moderatorService.enterRoom(this.id);
     // const id = this.route.snapshot.paramMap.get('id');
     //
     // this.id = id;

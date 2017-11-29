@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import {strictEqual} from 'assert';
 import { AngularFireDatabase } from 'angularfire2/database';
+import {Problem} from './problem';
 
 @Injectable()
 export class ModeratorService {
@@ -22,6 +23,14 @@ export class ModeratorService {
   constructor(private messageService: MessageService,
               private db: AngularFireDatabase) {
     // this.db = this.db
+  }
+
+  addToProblemQueue(problem: any, roomId: string) {
+    return this.db.list(`rooms/${roomId}/problems`).push(problem);
+  }
+
+  pushProblem(obj: Problem) {
+    return this.db.list('problems').push(obj);
   }
 
   setRoomId(roomid: string) {

@@ -19,7 +19,7 @@
   <!--<div *ngFor="let item of playerList | async">-->
 
   <div class="sec2" fxFlex="30" fxFlexOffset="15px">
-    <app-problem-moderator [problemId]="problemId"></app-problem-moderator>
+    <app-problem-moderator [moderatorId]="id" [roomId]="moderator?.roomid"></app-problem-moderator>
   </div>
 
   <div class="sec1" fxFlex="15" fxFlex.md="56" fxFlexOffset="15px">
