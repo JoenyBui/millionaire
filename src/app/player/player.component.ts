@@ -12,14 +12,14 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-  db: AngularFireDatabase;
+  // db: AngularFireDatabase;
   name: string;
   passcode: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              db: AngularFireDatabase) {
-    this.db = db;
+              private db: AngularFireDatabase) {
+    // this.db = db;
   }
 
 
@@ -69,4 +69,6 @@ export class PlayerComponent implements OnInit {
         console.log(err);
       });
   }
+
+
 }

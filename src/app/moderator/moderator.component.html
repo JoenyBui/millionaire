@@ -1,16 +1,15 @@
-<mat-card>
-  <div class="moderator-container">
-    <!--<form>-->
-
+<div [fxLayout]="column" fxLayoutAlign="center">
+  <mat-card fxFlex="80%" fxFlex.xs="100%">
+    <form class="moderator-container">
       <mat-form-field>
-        <input matInput placeholder="Name" required [(ngModel)]="name">
+        <input matInput name="name" placeholder="Name" required [(ngModel)]="name">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Room Title" required [(ngModel)]="roomName">
+        <input matInput name="roomTitle" placeholder="Room Title" required [(ngModel)]="roomName">
       </mat-form-field>
 
       <button mat-raised-button color="primary" (click)="createNewRoom()">Create Room</button>
-    <!--</form>-->
-  </div>
-</mat-card>
+    </form>
+  </mat-card>
+</div>

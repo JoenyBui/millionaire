@@ -1,25 +1,33 @@
-<div class="example-container" fxLayout="column">
+<div class="container" fxLayout="row" fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column">
 
-  <mat-card fxFlex="33">
-    <label>{{name}}</label>
+  <!--<mat-card fxFlex="33">-->
+    <!--<label>{{name}}</label>-->
 
-    <mat-list>
-      <mat-list-item *ngFor="let item of playerList | async">
-        <mat-icon mat-list-icon>folder</mat-icon>
-        <h4 mat-line>{{item.key}}</h4>
-        <!--{{ item.payload.val() }}-->
-      </mat-list-item>
-    </mat-list>
+    <!--<mat-list>-->
+      <!--<mat-list-item *ngFor="let item of playerList | async">-->
+        <!--<mat-icon mat-list-icon>folder</mat-icon>-->
+        <!--<h4 mat-line>{{item.key}}</h4>-->
+        <!--&lt;!&ndash;{{ item.payload.val() }}&ndash;&gt;-->
+      <!--</mat-list-item>-->
+    <!--</mat-list>-->
 
-    <button mat-raised-button color="primary" (click)="addNewProblem()">
-      Add New Problem
-    </button>
-  </mat-card>
+    <!--<button mat-raised-button color="primary" (click)="addNewProblem()">-->
+      <!--Add New Problem-->
+    <!--</button>-->
+  <!--</mat-card>-->
 
   <!--<div *ngFor="let item of playerList | async">-->
-  <app-room-problem-list [roomId]="moderator?.roomid" (roomidChange)="roomidChange($event)"></app-room-problem-list>
-  <app-room-person-list [roomId]="moderator?.roomid"  (roomidChange)="roomidChange($event)"></app-room-person-list>
-  <app-problem-moderator [problemId]="problemId"></app-problem-moderator>
-  <!--</div>-->
+
+  <div class="sec2" fxFlex="30" fxFlexOffset="15px">
+    <app-problem-moderator [problemId]="problemId"></app-problem-moderator>
+  </div>
+
+  <div class="sec1" fxFlex="15" fxFlex.md="56" fxFlexOffset="15px">
+    <app-room-person-list [roomId]="moderator?.roomid"  (roomidChange)="roomidChange($event)"></app-room-person-list>
+  </div>
+
+  <div class="sec3" fxFlex="55" fxFlex.md="15" fxFlexOffset="15px" fxShow [fxHide.md]="true">
+    <app-room-problem-list [roomId]="moderator?.roomid" (roomidChange)="roomidChange($event)"></app-room-problem-list>
+  </div>
 </div>
 

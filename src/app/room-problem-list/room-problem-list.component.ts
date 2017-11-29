@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 
 import { ModeratorService } from '../moderator.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-room-problem-list',
@@ -10,13 +11,18 @@ import { ModeratorService } from '../moderator.service';
 })
 export class RoomProblemListComponent implements OnInit {
   @Input() roomId: string;
-  constructor() { }
+  public problems: Observable<any[];
+  constructor(private moderateService: ModeratorService) { }
 
   ngOnInit() {
+    this.watchProblems();
   }
 
-  roomidChange(roomid: string) {
-    console.log(roomid);
+  watchProblems() {
+    this.problems = this.moderateService.getRoomProblems(this.roomId).snapshotChanges().map(changes => {
+      return changes.map(c => {
+        return {key: c.key, val: c.payload.val()};
+      });
+    });
   }
-
 }

@@ -60,6 +60,10 @@ export class ModeratorService {
     return this.db.list(`/roomPresence/${id}/`);
   }
 
+  getRoomProblems(id: string) {
+    return this.db.list(`/rooms/${id}/problems`);
+  }
+
   // Service message commands
   announceMission(mission: string) {
     this.missionAnnouncedSource.next(mission);

@@ -12,6 +12,8 @@ import * as _ from  'underscore';
 export class AppComponent {
   title = 'app';
   items: Observable<any[]>;
+  photo: string = 'https://images.unsplash.com/photo-1465935343323-d742334bcbda?auto=format&fit=crop&w=3392&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D';
+
   constructor(db: AngularFirestore) {
     this.items = db.collection('items').valueChanges();
   }

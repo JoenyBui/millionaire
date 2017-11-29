@@ -1,4 +1,12 @@
-<p>
-  room-problem-list works!
-  {{roomid}}
-</p>
+<div>
+  <mat-card>
+    <h3>Room ID {{roomId}}</h3>
+    <mat-list>
+      <h3 mat-subheader>Problems</h3>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let problem of problems | async">
+          <h4 mat-line>{{(problem | async)?.key}}</h4>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
