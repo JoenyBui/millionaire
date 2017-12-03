@@ -21,7 +21,7 @@ export class ModeratorService {
   missionConfirmed$ = this.missionConfirmedSource.asObservable();
 
   constructor(private messageService: MessageService,
-              private db: AngularFireDatabase) {
+              public db: AngularFireDatabase) {
     // this.db = this.db
   }
 
@@ -31,6 +31,10 @@ export class ModeratorService {
 
   pushProblem(obj: Problem) {
     return this.db.list('problems').push(obj);
+  }
+
+  getProble(id: string) {
+    return this.db.object(`problems/${id}`);
   }
 
   setRoomId(roomid: string) {
@@ -70,7 +74,7 @@ export class ModeratorService {
   }
 
   getRoomProblems(id: string) {
-    return this.db.list(`/rooms/${id}/problems`);
+    return this.db.list(`rooms/${id}/problems`);
   }
 
   // Service message commands
@@ -82,6 +86,9 @@ export class ModeratorService {
     this.missionConfirmedSource.next(astronaut);
   }
 
+  setCurrentProblem(roomId: string, problemId: string) {
+    return this.db.object(`/rooms/${roomId}`).update({'onDeck': problemId});
+  }
   // getRoom(): Observable<String> {
   //   this.messageService.add('ModeratorService: fetched room');
   //   return of('12345f');

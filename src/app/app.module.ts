@@ -17,7 +17,8 @@ import {
   MatToolbarModule,
   MatCheckboxModule,
   MatGridListModule,
-  MatSliderModule, MatTabsModule
+  MatSliderModule,
+  MatTabsModule, MatTableModule, MatPaginatorModule
 } from '@angular/material';
 import {MatListModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
@@ -46,6 +47,7 @@ import { MessageService } from './message.service';
 
 
 import { MapToIterablePipe } from './pipe/map-to-iterable';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -85,8 +87,11 @@ import { MapToIterablePipe } from './pipe/map-to-iterable';
     MatGridListModule,
     MatSliderModule,
     MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [GameService, ModeratorService, PlayerService, MessageService],
   bootstrap: [AppComponent]
