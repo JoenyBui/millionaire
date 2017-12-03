@@ -1,3 +1,11 @@
 <mat-card>
   problem-player works!
+
+  <div *ngIf="onDeckId">
+    {{onDeckId}} problem
+  </div>
+
+  <div *ngIf="onDeckId == null">
+    Null Value
+  </div>
 </mat-card>

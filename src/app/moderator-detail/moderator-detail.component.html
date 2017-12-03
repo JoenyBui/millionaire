@@ -19,15 +19,15 @@
   <!--<div *ngFor="let item of playerList | async">-->
 
   <div class="sec2" fxFlex="30" fxFlexOffset="15px">
-    <app-problem-moderator [moderatorId]="id" [roomId]="moderator?.roomid"></app-problem-moderator>
+    <app-problem-moderator [moderatorId]="id" [roomId]="moderator?.roomId"></app-problem-moderator>
   </div>
 
   <div class="sec1" fxFlex="15" fxFlex.md="56" fxFlexOffset="15px">
-    <app-room-person-list [roomId]="moderator?.roomid"  (roomidChange)="roomidChange($event)"></app-room-person-list>
+    <app-room-person-list [roomId]="moderator?.roomId"  (roomIdChange)="roomIdChange($event)"></app-room-person-list>
   </div>
 
   <!--<div class="sec3" fxFlex="55" fxFlex.md="15" fxFlexOffset="15px" fxShow [fxHide.md]="true">-->
-    <!--<app-room-problem-list [roomId]="moderator?.roomid" (roomidChange)="roomidChange($event)"></app-room-problem-list>-->
+    <!--<app-room-problem-list [roomId]="moderator?.roomId" (roomIdChange)="roomIdChange($event)"></app-room-problem-list>-->
   <!--</div>-->
 </div>
 

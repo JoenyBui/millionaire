@@ -1,5 +1,7 @@
 <div [fxLayout]="column" fxLayoutAlign="center">
-  <mat-card>
-    {{name}}
-  </mat-card>
+  {{player?.name}}
+
+  <div>
+    <app-problem-player [roomId]="player?.roomId"></app-problem-player>
+  </div>
 </div>

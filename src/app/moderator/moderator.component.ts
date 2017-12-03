@@ -52,9 +52,9 @@ export class ModeratorComponent implements OnInit {
     return this.db.list('moderators').update(key, obj);
   }
 
-  addCodeMap(passcode, roomid) {
+  addCodeMap(passcode, roomId) {
     return this.db.object('codeToMap').update({
-        [passcode] : roomid
+        [passcode] : roomId
       }
     );
   }
@@ -70,7 +70,7 @@ export class ModeratorComponent implements OnInit {
         this.saveNewModerator(name).then(
           (val1) => this.saveNewRoom(roomName, val1.key, passcode).then(
             (val2) => {
-              this.updateModerator(val1.key, {roomid: val2.key});
+              this.updateModerator(val1.key, {roomId: val2.key});
               this.addCodeMap(passcode, val2.key);
 
               resolve({key: val1.key, obj: val2});

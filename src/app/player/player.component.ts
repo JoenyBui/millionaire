@@ -26,12 +26,12 @@ export class PlayerComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveNewPlayer(name: string, roomid: string) {
+  saveNewPlayer(name: string, roomId: string) {
     const playerRef = this.db.list('players');
 
     return playerRef.push({
       name: name,
-      roomid: roomid
+      roomId: roomId
     });
   }
 
@@ -58,8 +58,8 @@ export class PlayerComponent implements OnInit {
   joinGameRoom() {
     const playerName = this.name;
     this.findGameRoom().then((val) => {
-        const roomid = val.roomId;
-        this.saveNewPlayer(playerName, roomid).then((val1) => {
+        const roomId = val.roomId;
+        this.saveNewPlayer(playerName, roomId).then((val1) => {
           this.router.navigate([`/player-room/${val1.key}`]);
         }, (err1) => {
           console.log(err1);

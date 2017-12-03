@@ -11,7 +11,7 @@ admin.initializeApp(functions.config().firebase);
 // })
 
 exports.timer = functions.https.onRequest((req, res) => {
-  // check the body of the request for time interval and the roomid
+  // check the body of the request for time interval and the roomId
   const timeStepInSeconds = req.query.timeStep
   const roomId = req.query.roomId
 

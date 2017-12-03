@@ -37,8 +37,8 @@ export class ModeratorService {
     return this.db.object(`problems/${id}`);
   }
 
-  setRoomId(roomid: string) {
-    this.roomId = roomid;
+  setRoomId(roomId: string) {
+    this.roomId = roomId;
   }
 
   getRoomId(): string {

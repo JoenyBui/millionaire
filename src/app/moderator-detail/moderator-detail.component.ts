@@ -24,10 +24,10 @@ export class ModeratorDetailComponent implements OnInit {
   moderator;
   id: string;
   name: string;
-  roomid: string;
+  roomId: string;
   playerList: Observable<any[]>;
 
-  @Output() roomidChange = new EventEmitter<string>();
+  @Output() roomIdChange = new EventEmitter<string>();
   problemId: string;
 
   db: AngularFireDatabase;
@@ -71,11 +71,11 @@ export class ModeratorDetailComponent implements OnInit {
     //   const userRef = this.db.database.ref(`/moderators/${id}/presence`);
     //
     //   this.name = val.name;
-    //   this.roomid = val.roomid;
+    //   this.roomId = val.roomId;
     //
-    //   this.moderatorService.setRoomId(val.roomid);
+    //   this.moderatorService.setRoomId(val.roomId);
     //
-    //   this.roomidChange.emit(this.roomid);
+    //   this.roomIdChange.emit(this.roomId);
     //
     //   this.syncPlayers();
     //
