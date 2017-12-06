@@ -12,17 +12,27 @@
 
     <mat-tab-group>
       <mat-tab label="Multiple Choice">
-        <mat-grid-list cols="2" rowHeight="100px">
-          <mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="primary">Red</button></mat-grid-tile>
-          <mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="accent">Blue</button></mat-grid-tile>
 
-          <mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="warn">Green</button></mat-grid-tile>
-          <mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="yellow">Yellow</button></mat-grid-tile>
-        </mat-grid-list>
+        <mat-slider thumbLabel tickInterval="1" [(ngModel)]="mcNumOfChoice" [min]='mcMin' [max]="mcMax" (ngModelChange)="onMcSliderChange($event)"></mat-slider>
+
+        <div *ngFor="let mItem of mcItems; let i=index">
+          <!--{{ mItem}}-->
+          <input [(ngModel)]="mcItems[i]">
+        </div>
+
+        <app-multiple-choice [items]="mcItems"></app-multiple-choice>
+        <!--<mat-grid-list cols="2" rowHeight="100px">-->
+
+          <!--<mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="primary">Red</button></mat-grid-tile>-->
+          <!--<mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="accent">Blue</button></mat-grid-tile>-->
+
+          <!--<mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="warn">Green</button></mat-grid-tile>-->
+          <!--<mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="yellow">Yellow</button></mat-grid-tile>-->
+        <!--</mat-grid-list>-->
       </mat-tab>
-      <mat-tab label="Slider">
-        <mat-slider step="4" tickInterval="3"></mat-slider>
-      </mat-tab>
+      <!--<mat-tab label="Slider">-->
+        <!--<mat-slider step="4" tickInterval="3"></mat-slider>-->
+      <!--</mat-tab>-->
     </mat-tab-group>
 
   </mat-card-content>

@@ -5,6 +5,7 @@ import { Problem} from '../problem';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {serialize} from '@angular/compiler/src/i18n/serializers/xml_helper';
 import {HttpClient, HttpParams} from '@angular/common/http';
+import {split} from 'ts-node/dist';
 
 @Component({
   selector: 'app-problem-moderator',
@@ -17,13 +18,26 @@ export class ProblemModeratorComponent implements OnInit {
   @Input() roomId: string;
   name: string;
   @Output() nameChange = new EventEmitter();
+  public mcNumOfChoice = 4;
+  public mcMin = 2;
+  public mcMax = 6;
+  public mcItems = [1, 2];
   constructor(private db: AngularFireDatabase,
               private service: ModeratorService,
               private http: HttpClient) { }
 
   ngOnInit() {
   }
-
+  onMcSliderChange(slideValue) {
+    if (slideValue > this.mcItems.length) {
+      for (const _i = 0; _i < (slideValue - this.mcItems.length); _i++) {
+        this.mcItems.push(1);
+      }
+    }
+    else if (slideValue < this.mcItems.length) {
+      this.mcItems.splice(0, slideValue);
+    }
+  }
   resetProblem() {}
   submit() {
     const roomId = this.roomId;

@@ -12,12 +12,16 @@ export class ProblemPlayerComponent implements OnInit {
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
-    this.watchOnDeck(this.roomId)
+    this.watchOnDeck(this.roomId);
+  }
+
+  onAnswer(event) {
+    console.log(event);
   }
 
   watchOnDeck(roomId) {
-    const self = this
-    this.playerService.getRoomOnDeck(roomId).on('value', function(snapshot) {
+    const self = this;
+    this.playerService.getRoomOnDeck(roomId).on('value', function (snapshot) {
       if (snapshot.val()) {
         self.onDeckId = snapshot.val();
         console.log('We are in');
@@ -25,6 +29,6 @@ export class ProblemPlayerComponent implements OnInit {
         self.onDeckId = null;
         console.log('We are out');
       }
-    })
+    });
   }
 }

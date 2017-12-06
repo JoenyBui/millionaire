@@ -48,6 +48,7 @@ import { MessageService } from './message.service';
 
 import { MapToIterablePipe } from './pipe/map-to-iterable';
 import {HttpClientModule} from '@angular/common/http';
+import { MultipleChoiceComponent } from './multiple-choice/multiple-choice.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {HttpClientModule} from '@angular/common/http';
     RoomPersonListComponent,
     RoomProblemListComponent,
     MessagesComponent,
-    MapToIterablePipe
+    MapToIterablePipe,
+    MultipleChoiceComponent
   ],
   imports: [
     BrowserModule,

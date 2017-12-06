@@ -3,6 +3,7 @@
 
   <div *ngIf="onDeckId">
     {{onDeckId}} problem
+    <app-multiple-choice [items]="[1, 2, 3, 4, 5]" (onAnswer)="onAnswer($event)"></app-multiple-choice>
   </div>
 
   <div *ngIf="onDeckId == null">
