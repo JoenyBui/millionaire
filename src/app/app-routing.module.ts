@@ -14,10 +14,10 @@ import {PlayerDetailResolveService} from './player-detail/player-detail.resolve.
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: LandingPageComponent},
-  {path: 'moderator-room/:id', component: ModeratorDetailComponent, resolve: {moderator: ModeratorDetailResolveService}},
+  {path: 'moderator/:id', component: ModeratorDetailComponent, resolve: {moderator: ModeratorDetailResolveService}},
   {path: 'moderator', component: ModeratorComponent},
   {path: 'player', component: PlayerComponent},
-  {path: 'player-room/:id', component: PlayerDetailComponent, resolve: {player: PlayerDetailResolveService}},
+  {path: 'player/:id', component: PlayerDetailComponent, resolve: {player: PlayerDetailResolveService}},
   {path: 'room/:id', component: RoomComponent}
 ];
 

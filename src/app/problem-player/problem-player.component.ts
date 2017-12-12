@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {PlayerService} from '../player.service';
+import {AngularFireObject} from 'angularfire2/database';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-problem-player',
@@ -15,8 +17,8 @@ export class ProblemPlayerComponent implements OnInit {
     this.watchOnDeck(this.roomId);
   }
 
-  onAnswer(event) {
-    console.log(event);
+  onAnswer(snapshot) {
+    console.log(snapshot);
   }
 
   watchOnDeck(roomId) {
@@ -24,7 +26,19 @@ export class ProblemPlayerComponent implements OnInit {
     this.playerService.getRoomOnDeck(roomId).on('value', function (snapshot) {
       if (snapshot.val()) {
         self.onDeckId = snapshot.val();
-        console.log('We are in');
+
+        self.playerService.getProblem(self.roomId, self.onDeckId).then(
+          (obj: AngularFireObject<any>) => {
+            obj.snapshotChanges().subscribe(action => {
+              const problemVal = action.payload.val();
+
+              console.log(problemVal);
+            });
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
       } else {
         self.onDeckId = null;
         console.log('We are out');

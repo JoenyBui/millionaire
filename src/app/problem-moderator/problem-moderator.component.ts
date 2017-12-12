@@ -21,28 +21,35 @@ export class ProblemModeratorComponent implements OnInit {
   public mcNumOfChoice = 4;
   public mcMin = 2;
   public mcMax = 6;
-  public mcItems = [1, 2];
+  public mcItems = ['A', 'B', 'C', 'D'];
+  public mcAnswer = null;
   constructor(private db: AngularFireDatabase,
               private service: ModeratorService,
               private http: HttpClient) { }
-
   ngOnInit() {
   }
   onMcSliderChange(slideValue) {
-    if (slideValue > this.mcItems.length) {
-      for (const _i = 0; _i < (slideValue - this.mcItems.length); _i++) {
-        this.mcItems.push(1);
+    if (this.mcNumOfChoice > this.mcItems.length) {
+      for (var _i = 0; _i < (this.mcNumOfChoice - this.mcItems.length); _i++) {
+        this.mcItems.push('');
       }
     }
-    else if (slideValue < this.mcItems.length) {
-      this.mcItems.splice(0, slideValue);
+    else if (this.mcNumOfChoice < this.mcItems.length) {
+      this.mcItems.splice(0, this.mcNumOfChoice);
     }
+  }
+  onAnswer(snapshot) {
+    this.mcAnswer = snapshot;
   }
   resetProblem() {}
   submit() {
     const roomId = this.roomId;
     const obj = new Problem();
-    obj.name = this.name;
+
+    obj.items = this.mcItems;
+    obj.answer = this.mcAnswer;
+
+    // obj.name = this.name;
     this.service.pushProblem(obj).then(
       (val) => {
         this.service.addToProblemQueue(

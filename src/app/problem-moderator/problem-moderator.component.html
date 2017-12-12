@@ -20,7 +20,9 @@
           <input [(ngModel)]="mcItems[i]">
         </div>
 
-        <app-multiple-choice [items]="mcItems"></app-multiple-choice>
+        <app-multiple-choice [items]="mcItems" (onAnswer)="onAnswer($event)"></app-multiple-choice>
+
+        <label>Answer: {{mcAnswer}}</label>
         <!--<mat-grid-list cols="2" rowHeight="100px">-->
 
           <!--<mat-grid-tile [colspan]="1" [rowspan]="1"><button class="full-width full-height" mat-raised-button color="primary">Red</button></mat-grid-tile>-->

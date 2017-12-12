@@ -13,6 +13,21 @@ export class PlayerService {
     return this.db.database.ref(`rooms/${id}/onDeck`);
   }
 
+  getProblem(roomId: string, problemId: string) {
+    const self = this;
+    return new Promise((resolve, reject) => {
+      self.db.object(`/rooms/${roomId}/problems/${problemId}`).snapshotChanges().subscribe(action => {
+        const obj = action.payload.val();
+
+        if (obj) {
+          resolve(self.db.object(`problems/${obj.problemId}`));
+        } else {
+          reject('Problem not found!');
+        }
+      });
+    });
+  }
+
   enterRoom(id: string, roomId: string) {
     const amOnline = this.db.database.ref('/.info/connected');
     // const userRef = this.db.database.ref(`/moderators/${id}/presence`);
