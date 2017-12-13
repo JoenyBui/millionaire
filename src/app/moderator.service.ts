@@ -15,10 +15,6 @@ export class ModeratorService {
   private missionAnnouncedSource = new Subject<string>();
   private missionConfirmedSource = new Subject<string>();
   private roomId: string;
-  // db: AngularFireDatabase;
-  // Observable string streams
-  missionAnnounced$ = this.missionAnnouncedSource.asObservable();
-  missionConfirmed$ = this.missionConfirmedSource.asObservable();
 
   constructor(private messageService: MessageService,
               public db: AngularFireDatabase) {
@@ -33,7 +29,7 @@ export class ModeratorService {
     return this.db.list('problems').push(obj);
   }
 
-  getProble(id: string) {
+  getProblem(id: string) {
     return this.db.object(`problems/${id}`);
   }
 
@@ -75,15 +71,6 @@ export class ModeratorService {
 
   getRoomProblems(id: string) {
     return this.db.list(`rooms/${id}/problems`);
-  }
-
-  // Service message commands
-  announceMission(mission: string) {
-    this.missionAnnouncedSource.next(mission);
-  }
-
-  confirmMission(astronaut: string) {
-    this.missionConfirmedSource.next(astronaut);
   }
 
   setCurrentProblem(roomId: string, problemId: string) {

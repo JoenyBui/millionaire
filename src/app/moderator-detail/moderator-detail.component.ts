@@ -13,6 +13,7 @@ import { RoomPersonListComponent } from '../room-person-list/room-person-list.co
 import {RoomProblemListComponent} from '../room-problem-list/room-problem-list.component';
 
 import { ModeratorService } from '../moderator.service';
+import {Room} from '../room';
 
 @Component({
   selector: 'app-moderator-detail',
@@ -24,7 +25,7 @@ export class ModeratorDetailComponent implements OnInit {
   moderator;
   id: string;
   name: string;
-  roomId: string;
+  room: Observable<Room>|null = null;
   playerList: Observable<any[]>;
 
   @Output() roomIdChange = new EventEmitter<string>();
@@ -58,33 +59,18 @@ export class ModeratorDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const self = this;
     this.id = this.route.snapshot.paramMap.get('id');
     this.moderator = this.route.snapshot.data['moderator'];
     this.moderatorService.enterRoom(this.id);
-    // const id = this.route.snapshot.paramMap.get('id');
-    //
-    // this.id = id;
-    //
-    // this.db.object(`moderators/${id}`).snapshotChanges().subscribe(action => {
-    //   const val = action.payload.val();
-    //   const amOnline = this.db.database.ref('/.info/connected');
-    //   const userRef = this.db.database.ref(`/moderators/${id}/presence`);
-    //
-    //   this.name = val.name;
-    //   this.roomId = val.roomId;
-    //
-    //   this.moderatorService.setRoomId(val.roomId);
-    //
-    //   this.roomIdChange.emit(this.roomId);
-    //
-    //   this.syncPlayers();
-    //
-    //   amOnline.on('value', function (snapshot) {
-    //     if (snapshot.val()) {
-    //       userRef.onDisconnect().remove();
-    //       userRef.set(true);
-    //     }
-    //   });
-    // });
+
+    this.moderatorService.getRoom(this.moderator.roomId).snapshotChanges().subscribe(snapshot => {
+      if (snapshot.payload.val()) {
+        self.room = snapshot.payload.val();
+      }
+      else {
+        console.log('Could not get the passcode.');
+      }
+    });
   }
 }
