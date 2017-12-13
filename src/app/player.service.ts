@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database';
+import {AngularFireDatabase, snapshotChanges} from 'angularfire2/database';
 
 @Injectable()
 export class PlayerService {
@@ -25,6 +25,15 @@ export class PlayerService {
           reject('Problem not found!');
         }
       });
+    });
+  }
+
+  submitAnswer(roomId: string, problemId: string, playerId: string, answer: any) {
+    const self = this;
+
+    return this.db.database.ref(`/rooms/${roomId}/problems/${problemId}/answers/${playerId}`).set({
+      answer: answer,
+      updatedAt: Date.now()
     });
   }
 

@@ -18,7 +18,6 @@ export class PlayerDetailComponent implements OnInit {
   player;
   id: string;
   name: string;
-  // db: AngularFireDatabase;
   constructor(
     private route: ActivatedRoute,
     private db: AngularFireDatabase,

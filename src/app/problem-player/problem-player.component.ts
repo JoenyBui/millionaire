@@ -9,8 +9,11 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./problem-player.component.css']
 })
 export class ProblemPlayerComponent implements OnInit {
+  @Input() playerId: string;
   @Input() roomId: string;
   @Input() onDeckId: string;
+  public currentProblem: Array<any>;
+
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
@@ -18,7 +21,7 @@ export class ProblemPlayerComponent implements OnInit {
   }
 
   onAnswer(snapshot) {
-    console.log(snapshot);
+    this.playerService.submitAnswer(this.roomId, this.onDeckId, this.playerId, snapshot);
   }
 
   watchOnDeck(roomId) {
@@ -32,6 +35,7 @@ export class ProblemPlayerComponent implements OnInit {
             obj.snapshotChanges().subscribe(action => {
               const problemVal = action.payload.val();
 
+              self.currentProblem = problemVal.items;
               console.log(problemVal);
             });
           },
