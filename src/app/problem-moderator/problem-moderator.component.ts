@@ -41,6 +41,9 @@ export class ProblemModeratorComponent implements OnInit {
   onAnswer(snapshot) {
     this.mcAnswer = snapshot;
   }
+  trackByFn(index: any, item: any) {
+    return index;
+  }
   resetProblem() {}
   submit() {
     const roomId = this.roomId;

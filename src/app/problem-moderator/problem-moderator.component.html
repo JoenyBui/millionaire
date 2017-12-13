@@ -6,21 +6,34 @@
   </mat-card-header>
 
   <mat-card-content>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Name" [(ngModel)]="name" value="name">
-    </mat-form-field>
+    <!--<mat-form-field class="full-width">-->
+      <!--<input matInput placeholder="Name" [(ngModel)]="name" value="name">-->
+    <!--</mat-form-field>-->
 
     <mat-tab-group>
       <mat-tab label="Multiple Choice">
+        <div class="flex-container" fxLayout="column" fxLayoutAlign="center center">
+          <div class="flex-item" fxFlex>
+            <mat-slider thumbLabel tickInterval="1" [(ngModel)]="mcNumOfChoice" [min]='mcMin' [max]="mcMax" (ngModelChange)="onMcSliderChange($event)" fxFlexAlign="center"></mat-slider>
+          </div>
 
-        <mat-slider thumbLabel tickInterval="1" [(ngModel)]="mcNumOfChoice" [min]='mcMin' [max]="mcMax" (ngModelChange)="onMcSliderChange($event)"></mat-slider>
+          <div class="flex-item">
+            <div fxLayout="row">
+              <div fxLayout="column">
+                <div class="flex-item" *ngFor="let mItem of mcItems; let i=index; trackBy:trackByFn;" fxFlex>
+                  <!--{{ mItem}}-->
+                  <input [(ngModel)]="mcItems[i]">
+                </div>
+              </div>
 
-        <div *ngFor="let mItem of mcItems; let i=index">
-          <!--{{ mItem}}-->
-          <input [(ngModel)]="mcItems[i]">
+              <div class="flex-item" fxFlex>
+                <app-multiple-choice [items]="mcItems" (onAnswer)="onAnswer($event)"></app-multiple-choice>
+              </div>
+            </div>
+
+
+          </div>
         </div>
-
-        <app-multiple-choice [items]="mcItems" (onAnswer)="onAnswer($event)"></app-multiple-choice>
 
         <label>Answer: {{mcAnswer}}</label>
         <!--<mat-grid-list cols="2" rowHeight="100px">-->
