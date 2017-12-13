@@ -23,6 +23,7 @@ export class ProblemModeratorComponent implements OnInit {
   public mcMax = 6;
   public mcItems = ['A', 'B', 'C', 'D'];
   public mcAnswer = null;
+  public mcTime: number = 10;
   constructor(private db: AngularFireDatabase,
               private service: ModeratorService,
               private http: HttpClient) { }
@@ -61,11 +62,11 @@ export class ProblemModeratorComponent implements OnInit {
             'submittedAt': Date.now()
           }, roomId).then(
             (val1) => this.service.setCurrentProblem(roomId, val1.key).then((val2) => {
-              const body = {timeStep: 10, roomId: roomId};
+              const body = {timeStep: this.mcTime, roomId: roomId};
               this.http.post(
                 'https://us-central1-millionaire-447b3.cloudfunctions.net/timer',
                 body, {
-                params: new HttpParams().set('timeStep', '1').set('roomId', roomId)
+                params: new HttpParams().set('timeStep', this.mcTime.toString()).set('roomId', roomId)
               }
             ).subscribe(
                 (data) => console.log(data),

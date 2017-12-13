@@ -3,6 +3,6 @@
     <app-multiple-choice [items]="currentProblem" (onAnswer)="onAnswer($event)"></app-multiple-choice>
   </div>
   <div *ngIf="onDeckId == null">
-    Null Value
+    Waiting for new problem.
   </div>
 </mat-card>

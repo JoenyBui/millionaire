@@ -14,7 +14,8 @@
       <mat-tab label="Multiple Choice">
         <div class="flex-container" fxLayout="column" fxLayoutAlign="center center">
           <div class="flex-item" fxFlex>
-            <mat-slider thumbLabel tickInterval="1" [(ngModel)]="mcNumOfChoice" [min]='mcMin' [max]="mcMax" (ngModelChange)="onMcSliderChange($event)" fxFlexAlign="center"></mat-slider>
+            <mat-slider thumbLabel tickInterval="1" [(ngModel)]="mcNumOfChoice" [min]='mcMin' [max]="mcMax"
+                        (ngModelChange)="onMcSliderChange($event)" fxFlexAlign="center"></mat-slider>
           </div>
 
           <div class="flex-item">
@@ -31,7 +32,12 @@
               </div>
             </div>
 
+            <div class="flex-item">
+              <mat-form-field>
+                <input matInput  name="elapseTime" placeholder="Time Elapsed (Seconds)" [(ngModel)]="mcTime">
+              </mat-form-field>
 
+            </div>
           </div>
         </div>
 

@@ -87,7 +87,7 @@ export class ModeratorComponent implements OnInit {
     const promise = this.save(this.roomName, this.name);
 
     promise.then(
-      (val) => this.router.navigate([`/moderator-room/${val.key}`]),
+      (val) => this.router.navigate([`/moderator/${val.key}`]),
       (err) => console.log('has error when creating new room')
     );
   }

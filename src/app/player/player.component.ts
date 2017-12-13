@@ -60,7 +60,7 @@ export class PlayerComponent implements OnInit {
     this.findGameRoom().then((val) => {
         const roomId = val.roomId;
         this.saveNewPlayer(playerName, roomId).then((val1) => {
-          this.router.navigate([`/player-room/${val1.key}`]);
+          this.router.navigate([`/player/${val1.key}`]);
         }, (err1) => {
           console.log(err1);
         });

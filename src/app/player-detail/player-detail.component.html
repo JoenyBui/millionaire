@@ -1,7 +1,12 @@
 <div [fxLayout]="column" fxLayoutAlign="center">
-  {{player?.name}}
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{player?.name}}</mat-card-title>
+      <mat-card-subtitle>Player ID {{id}}</mat-card-subtitle>
+    </mat-card-header>
 
-  <div>
-    <app-problem-player [playerId]="id" [roomId]="player?.roomId"></app-problem-player>
-  </div>
+    <mat-card-content>
+      <app-problem-player [playerId]="id" [roomId]="player?.roomId"></app-problem-player>
+    </mat-card-content>
+  </mat-card>
 </div>
