@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {PlayerService} from '../player.service';
 import {AngularFireObject} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
+// import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-problem-player',
@@ -13,12 +14,21 @@ export class ProblemPlayerComponent implements OnInit {
   @Input() roomId: string;
   @Input() onDeckId: string;
   public currentProblem: Array<any>;
+  allotedTime: number;
+  answer: string;
+  ticks = 0;
 
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
+    // const timer = Observable.timer(2000, 1000);
+    // timer.subscribe(this.countDown);
     this.watchOnDeck(this.roomId);
   }
+
+  countDown(t) {
+    this.ticks = t;
+  },
 
   onAnswer(snapshot) {
     this.playerService.submitAnswer(this.roomId, this.onDeckId, this.playerId, snapshot);
@@ -36,6 +46,9 @@ export class ProblemPlayerComponent implements OnInit {
               const problemVal = action.payload.val();
 
               self.currentProblem = problemVal.items;
+              self.allotedTime = problemVal.allotedTime;
+              self.answer = problemVal.answer;
+
               console.log(problemVal);
             });
           },

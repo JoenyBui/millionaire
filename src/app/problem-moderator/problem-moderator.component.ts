@@ -52,6 +52,7 @@ export class ProblemModeratorComponent implements OnInit {
 
     obj.items = this.mcItems;
     obj.answer = this.mcAnswer;
+    obj.allotedTime = this.mcTime;
 
     // obj.name = this.name;
     this.service.pushProblem(obj).then(

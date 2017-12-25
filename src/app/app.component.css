@@ -1,9 +1,20 @@
 .auth-container {
-  height: 97vh;
-  width: 97vw;
-  background-image: url("https://images.unsplash.com/photo-1465935343323-d742334bcbda?auto=format&fit=crop&w=3392&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  /*height: 100%;*/
+  /*!*height: 97vh;*!*/
+  /*!*width: 97vw;*!*/
+  /*background-image: url("https://images.unsplash.com/photo-1465935343323-d742334bcbda?auto=format&fit=crop&w=3392&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D");*/
+  /*!*height: 100vh;*!*/
+  /*!*width: 100%;*!*/
+  /*!*width: 100vh;*!*/
+  padding: 10px;
+
+  /*!* Center and scale the image nicely *!*/
+  /*background-position: center;*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: cover;*/
+
+  /*-webkit-background-size: cover;*/
+  /*-moz-background-size: cover;*/
+  /*-o-background-size: cover;*/
+  /*background-size: cover;*/
 }

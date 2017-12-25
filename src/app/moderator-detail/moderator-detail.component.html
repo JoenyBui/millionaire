@@ -18,13 +18,13 @@
 
   <!--<div *ngFor="let item of playerList | async">-->
 
-  <div fxFlex="15">
+  <div fxFlex="33" fxFlexOffset="15px">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          Room
+          Room ID: {{id}}
         </mat-card-title>
-        <mat-card-subtitle>Descriptions</mat-card-subtitle>
+        <mat-card-subtitle>Name: {{room?.name}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <p>Ask the players to login through the player section.</p>
@@ -35,11 +35,11 @@
     </mat-card>
   </div>
 
-  <div class="sec2" fxFlex="30" fxFlexOffset="15px">
+  <div class="sec2" fxFlex="33" fxFlexOffset="15px">
     <app-problem-moderator [moderatorId]="id" [roomId]="moderator?.roomId"></app-problem-moderator>
   </div>
 
-  <div class="sec1" fxFlex="15" fxFlex.md="56" fxFlexOffset="15px">
+  <div class="sec1" fxFlex="33" fxFlex.md="56" fxFlexOffset="15px">
     <app-room-person-list [roomId]="moderator?.roomId"  (roomIdChange)="roomIdChange($event)"></app-room-person-list>
   </div>
 

@@ -49,6 +49,8 @@ import { MessageService } from './message.service';
 import { MapToIterablePipe } from './pipe/map-to-iterable';
 import {HttpClientModule} from '@angular/common/http';
 import { MultipleChoiceComponent } from './multiple-choice/multiple-choice.component';
+import { StopwatchComponent } from './stopwatch/stopwatch.component';
+import {StopWatchService} from './stopwatch.service';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { MultipleChoiceComponent } from './multiple-choice/multiple-choice.compo
     RoomProblemListComponent,
     MessagesComponent,
     MapToIterablePipe,
-    MultipleChoiceComponent
+    MultipleChoiceComponent,
+    StopwatchComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +98,7 @@ import { MultipleChoiceComponent } from './multiple-choice/multiple-choice.compo
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [GameService, ModeratorService, PlayerService, MessageService],
+  providers: [GameService, ModeratorService, PlayerService, MessageService, StopWatchService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

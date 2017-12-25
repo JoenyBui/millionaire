@@ -1,8 +1,10 @@
 <mat-card>
   <div *ngIf="onDeckId">
+    {{ticks}}
     <app-multiple-choice [items]="currentProblem" (onAnswer)="onAnswer($event)"></app-multiple-choice>
   </div>
   <div *ngIf="onDeckId == null">
-    Waiting for new problem.
+    <div *ngIf="answer">Previous answer is {{answer}}</div>
+    <div *ngIf="answer == null">Waiting for new problem.</div>
   </div>
 </mat-card>
