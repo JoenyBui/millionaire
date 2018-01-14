@@ -13,7 +13,7 @@ export class StopWatchService {
   }
 
   lap() {
-    let timeMs = this.startAt
+    const timeMs = this.startAt
       ? this.lapTime + this.now() - this.startAt
       : this.lapTime;
 
@@ -40,7 +40,7 @@ export class StopWatchService {
   }
 
   stop() {
-    let timeMs = this.startAt
+    const timeMs = this.startAt
       ? this.lapTime + this.now() - this.startAt
       : this.lapTime;
 

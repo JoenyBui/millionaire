@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import {PlayerService} from '../player.service';
 import {AngularFireObject} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
-// import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-problem-player',
@@ -25,10 +24,6 @@ export class ProblemPlayerComponent implements OnInit {
     // timer.subscribe(this.countDown);
     this.watchOnDeck(this.roomId);
   }
-
-  countDown(t) {
-    this.ticks = t;
-  },
 
   onAnswer(snapshot) {
     this.playerService.submitAnswer(this.roomId, this.onDeckId, this.playerId, snapshot);

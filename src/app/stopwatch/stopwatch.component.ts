@@ -1,6 +1,7 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StopWatchService } from '../stopwatch.service';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-stopwatch',
@@ -8,12 +9,12 @@ import { StopWatchService } from '../stopwatch.service';
   styleUrls: ['./stopwatch.component.css']
 })
 export class StopwatchComponent implements OnInit {
+  @Input() autoStart: true;
+
   public started: boolean;
   public time: number;
 
-  public autoStart: boolean = true;
-
-  private timer: any;
+  public timer: any;
 
   constructor(public stopwatchService: StopWatchService) {
     this.stopwatchService = stopwatchService;
@@ -36,7 +37,7 @@ export class StopwatchComponent implements OnInit {
   }
 
   getUpdate() {
-    let self = this;
+    const self = this;
 
     return () => {
       self.time = this.stopwatchService.time();

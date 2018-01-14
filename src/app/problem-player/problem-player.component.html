@@ -1,6 +1,7 @@
 <mat-card>
   <div *ngIf="onDeckId">
-    {{ticks}}
+    <!--{{ticks}}-->
+    <app-stopwatch autoStart="false"></app-stopwatch>
     <app-multiple-choice [items]="currentProblem" (onAnswer)="onAnswer($event)"></app-multiple-choice>
   </div>
   <div *ngIf="onDeckId == null">
