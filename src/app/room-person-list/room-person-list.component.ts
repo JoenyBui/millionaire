@@ -18,6 +18,7 @@ export class RoomPersonListComponent implements OnInit {
   }
 
   watchChildAdd() {
+    const self = this;
     this.players = this.moderateService.getRoomPlayers(this.roomId).snapshotChanges().map(changes => {
       return changes.map(c => {
           return this.moderateService.getPlayer(c.key).valueChanges();
@@ -28,6 +29,7 @@ export class RoomPersonListComponent implements OnInit {
   }
 
   watchChildDelete() {
+    const self = this;
     this.moderateService.getRoomPlayers(this.roomId).stateChanges(['child_added']).subscribe(action => {
       // actions.forEach(action => {
       console.log(action.type);

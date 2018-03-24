@@ -1,54 +1,90 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Problems in Room</mat-card-title>
-    <mat-card-subtitle>{{roomId}}</mat-card-subtitle>
-  </mat-card-header>
+<div>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Problems in Room</mat-card-title>
+    </mat-card-header>
 
-  <mat-card-content>
-    <div class="container mat-elevation-z1">
-      <mat-table #table [dataSource]="dataSource">
+    <mat-card-content>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let problem of problems | async">
+          <mat-expansion-panel-header>
+            {{problem.name}}
+          </mat-expansion-panel-header>
+          <mat-panel-description>
+            Type your name and ages.
+          </mat-panel-description>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+</div>
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-        </ng-container>
+<!--<div>-->
+  <!--<mat-card>-->
+    <!--<mat-list>-->
+      <!--<h3 mat-subheader>Problems in Room</h3>-->
+      <!--<mat-divider></mat-divider>-->
+      <!--<mat-list-item *ngFor="let problem of problems | async">-->
+        <!--<mat-icon mat-list-icon>face</mat-icon>-->
+        <!--<h4 mat-line>{{(problem | async)?.name}}</h4>-->
+        <!--&lt;!&ndash;<p mat-line> {{folder.updated | date}} </p>&ndash;&gt;-->
+        <!--<mat-divider></mat-divider>-->
+      <!--</mat-list-item>-->
+    <!--</mat-list>-->
+  <!--</mat-card>-->
+<!--</div>-->
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-        </ng-container>
+<!--<mat-card>-->
+  <!--<mat-card-header>-->
+    <!--<mat-card-title>Problems in Room</mat-card-title>-->
+    <!--<mat-card-subtitle>{{roomId}}</mat-card-subtitle>-->
+  <!--</mat-card-header>-->
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-        </ng-container>
+  <!--<mat-card-content>-->
+    <!--<div class="container mat-elevation-z1">-->
+      <!--<mat-table #table [dataSource]="dataSource">-->
 
-        <!-- Color Column -->
-        <ng-container matColumnDef="symbol">
-          <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-        </ng-container>
+        <!--&lt;!&ndash; Position Column &ndash;&gt;-->
+        <!--<ng-container matColumnDef="position">-->
+          <!--<mat-header-cell *matHeaderCellDef> No. </mat-header-cell>-->
+          <!--<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>-->
+        <!--</ng-container>-->
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
+        <!--&lt;!&ndash; Name Column &ndash;&gt;-->
+        <!--<ng-container matColumnDef="name">-->
+          <!--<mat-header-cell *matHeaderCellDef> Name </mat-header-cell>-->
+          <!--<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>-->
+        <!--</ng-container>-->
 
-      <mat-paginator #paginator
-                     [pageSize]="10"
-                     [pageSizeOptions]="[5, 10, 20]">
-      </mat-paginator>
-    </div>
-  </mat-card-content>
+        <!--&lt;!&ndash; Weight Column &ndash;&gt;-->
+        <!--<ng-container matColumnDef="weight">-->
+          <!--<mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>-->
+          <!--<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>-->
+        <!--</ng-container>-->
 
-  <mat-card-footer></mat-card-footer>
-  <!--<mat-list>-->
-    <!--<h3 mat-subheader>Problems</h3>-->
-    <!--<mat-divider></mat-divider>-->
-    <!--<mat-list-item *ngFor="let problem of problems | async">-->
-        <!--<h4 mat-line>{{(problem | async)?.key}}</h4>-->
-    <!--</mat-list-item>-->
-  <!--</mat-list>-->
-</mat-card>
+        <!--&lt;!&ndash; Color Column &ndash;&gt;-->
+        <!--<ng-container matColumnDef="symbol">-->
+          <!--<mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>-->
+          <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
+        <!--</ng-container>-->
+
+        <!--<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>-->
+        <!--<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>-->
+      <!--</mat-table>-->
+
+      <!--<mat-paginator #paginator-->
+                     <!--[pageSize]="10"-->
+                     <!--[pageSizeOptions]="[5, 10, 20]">-->
+      <!--</mat-paginator>-->
+    <!--</div>-->
+  <!--</mat-card-content>-->
+
+  <!--<mat-card-footer></mat-card-footer>-->
+  <!--&lt;!&ndash;<mat-list>&ndash;&gt;-->
+    <!--&lt;!&ndash;<h3 mat-subheader>Problems</h3>&ndash;&gt;-->
+    <!--&lt;!&ndash;<mat-divider></mat-divider>&ndash;&gt;-->
+    <!--&lt;!&ndash;<mat-list-item *ngFor="let problem of problems | async">&ndash;&gt;-->
+        <!--&lt;!&ndash;<h4 mat-line>{{(problem | async)?.key}}</h4>&ndash;&gt;-->
+    <!--&lt;!&ndash;</mat-list-item>&ndash;&gt;-->
+  <!--&lt;!&ndash;</mat-list>&ndash;&gt;-->
+<!--</mat-card>-->
