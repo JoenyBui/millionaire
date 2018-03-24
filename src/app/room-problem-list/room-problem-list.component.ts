@@ -23,33 +23,79 @@ export class RoomProblemListComponent implements OnInit {
   constructor(private moderateService: ModeratorService) {
   }
 
+  watchChildAdd() {
+    this.problems = this.moderateService.getRoomProblems(this.roomId).snapshotChanges().map(changes => {
+      return changes.map(c => ({name: 'help', log: c.payload.val()}));
+    });
+
+    // this.problems = this.moderateService.getRoomProblems(this.roomId).snapshotChanges().map(changes => {
+    //   return changes.map(c => {
+    //     console.log(c.type);
+    //     console.log(c.key);
+    //     console.log(c.payload.val());
+    //
+    //     const obj = c.payload.val();
+    //
+    //     const answerLength = Object.keys(obj.answers).length;
+    //     const problemObj = this.moderateService.getProblem(c.key).valueChanges();
+    //
+    //     return obj;
+    //     // return ({
+    //     //   // name: 'help',
+    //     //   answerLength: answerLength
+    //     // });
+    //     // return this.moderateService.getProblem(obj.problemId).valueChanges();
+    //   });
+    //   }
+    // );
+
+    // this.problems = this.moderateService.getRoomProblems(this.roomId).snapshotChanges()
+    //   .subscribe(actions => {
+    //     actions.forEach(action => {
+    //       console.log(action.type);
+    //       console.log(action.key);
+    //       console.log(action.payload.val());
+    //     });
+    //   });
+  }
+
+  watchChildDelete() {
+    this.moderateService.getRoomProblems(this.roomId).stateChanges(['child_added']).subscribe(action => {
+      console.log(action.type);
+      console.log(action.key);
+      console.log(action.payload.val());
+    });
+  }
+
   ngOnInit() {
-    this.moderateService.db.list(`rooms/${this.roomId}/problems`).snapshotChanges()
-      .subscribe(actions => {
-        actions.forEach(action => {
-          console.log(action.type);
-          console.log(action.key);
-          console.log(action.payload.val());
-        });
-      });
-    this.watchProblems();
+    this.watchChildAdd();
+    // this.watchChildDelete();
+
+
+    // this.watchProblems();
   }
 
   // ngAfterViewInit() {
   //   this.dataSource.paginator = this.paginator;
   // }
 
-  watchProblems() {
-    // this.problems = this.moderateService.getRoomProblems(this.roomId).snapshotChanges().subscribe(changes => {
-    //   return changes.map(c => {
-    //     // const id = c.key;
-    //     // const val = c.payload.val();
-    //
-    //     // return
-    //     return {key: c.key, val: c.payload.val()};
-    //   });
-    // });
-  }
+  // watchProblems() {
+  //   // this.problems = this.moderateService.getRoomProblems(this.roomId).snapshotChanges().subscribe(changes => {
+  //   //   return changes.map(c => {
+  //   //     // const id = c.key;
+  //   //     // const val = c.payload.val();
+  //   //
+  //   //     // return
+  //   //     return {key: c.key, val: c.payload.val()};
+  //   //   });
+  //   // });
+  // }
+}
+
+export interface Problem {
+  problemId: string;
+  submitted: string;
+  numOfProblems: string;
 }
 
 

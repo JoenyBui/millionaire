@@ -1,12 +1,19 @@
-<div [fxLayout]="column" fxLayoutAlign="center">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{player?.name}}</mat-card-title>
-      <mat-card-subtitle>Player ID {{id}}</mat-card-subtitle>
-    </mat-card-header>
+<div class="container" fxLayout="row" fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column">
 
-    <mat-card-content>
-      <app-problem-player [playerId]="id" [roomId]="player?.roomId"></app-problem-player>
-    </mat-card-content>
-  </mat-card>
+  <div fxFlex="50">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{player?.name}}</mat-card-title>
+        <mat-card-subtitle>Player ID {{id}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <app-problem-player [playerId]="id" [roomId]="player?.roomId"></app-problem-player>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxFlex="50" fxFlexOffset="15px">
+    <app-room-problem-list [roomId]="player?.roomId"></app-room-problem-list>
+  </div>
 </div>

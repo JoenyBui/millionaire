@@ -18,7 +18,7 @@ import {
   MatCheckboxModule,
   MatGridListModule,
   MatSliderModule,
-  MatTabsModule, MatTableModule, MatPaginatorModule
+  MatTabsModule, MatTableModule, MatPaginatorModule, MatExpansionModule
 } from '@angular/material';
 import {MatListModule, MatFormFieldModule, MatOptionModule, MatSelectModule} from '@angular/material';
 import {MatInputModule} from '@angular/material';
@@ -78,6 +78,7 @@ import {StopWatchService} from './stopwatch.service';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    // MatAccordianModule,
     MatButtonModule,
     MatCheckboxModule,
     MatToolbarModule,
@@ -85,6 +86,7 @@ import {StopWatchService} from './stopwatch.service';
     MatCardModule,
     MatMenuModule,
     MatListModule,
+    MatExpansionModule,
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,

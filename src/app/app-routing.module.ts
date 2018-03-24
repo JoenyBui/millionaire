@@ -12,7 +12,7 @@ import { ModeratorDetailResolveService } from './moderator-detail/moderator-deta
 import {PlayerDetailResolveService} from './player-detail/player-detail.resolve.service';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '', redirectTo: '/player', pathMatch: 'full'},
   {path: 'home', component: LandingPageComponent},
   {path: 'moderator/:id', component: ModeratorDetailComponent, resolve: {moderator: ModeratorDetailResolveService}},
   {path: 'moderator', component: ModeratorComponent},

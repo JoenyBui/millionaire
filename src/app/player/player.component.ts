@@ -69,6 +69,4 @@ export class PlayerComponent implements OnInit {
         console.log(err);
       });
   }
-
-
 }
