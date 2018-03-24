@@ -1,7 +1,7 @@
 .player-container {
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .player-container > * {
