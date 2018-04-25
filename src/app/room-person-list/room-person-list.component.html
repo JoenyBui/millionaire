@@ -1,14 +1,24 @@
 <div>
   <mat-card>
-    <mat-list>
-      <h3 mat-subheader>Players in Room</h3>
-      <mat-divider></mat-divider>
-      <mat-list-item *ngFor="let player of players | async">
-        <mat-icon mat-list-icon>face</mat-icon>
-        <h4 mat-line>{{(player | async)?.name}}</h4>
-        <!--<p mat-line> {{folder.updated | date}} </p>-->
-        <mat-divider></mat-divider>
-      </mat-list-item>
-    </mat-list>
+    <mat-card-header>
+      <mat-card-title>Players in Room</mat-card-title>
+      <mat-card-subtitle>Yes</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div *ngIf="players.length > 0; else elsePlayerBlock">
+        <mat-list>
+          <mat-divider></mat-divider>
+          <mat-list-item *ngFor="let player of players | async">
+            <mat-icon mat-list-icon>face</mat-icon>
+            <h4 mat-line>{{(player | async)?.name}}</h4>
+            <!--<p mat-line> {{folder.updated | date}} </p>-->
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <ng-template #elsePlayerBlock>
+        No Players are in the Room
+      </ng-template>
+    </mat-card-content>
   </mat-card>
 </div>
